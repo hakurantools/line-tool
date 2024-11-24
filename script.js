@@ -1,6 +1,15 @@
 let tabs = []; // 開いたタブを保存
 let intervalId; // setIntervalのIDを保存
 
+// ランダムな5桁の二進数を生成
+function generateRandomBinary() {
+  let binary = "";
+  for (let i = 0; i < 5; i++) {
+    binary += Math.random() < 0.5 ? "0" : "1"; // 0または1をランダムに追加
+  }
+  return binary;
+}
+
 document.getElementById("start").addEventListener("click", () => {
   const message = document.getElementById("message").value;
   const breaks = parseInt(document.getElementById("breaks").value);
@@ -18,7 +27,7 @@ document.getElementById("start").addEventListener("click", () => {
   // メッセージ生成
   let content = "";
   for (let i = 0; i < breaks; i++) {
-    content += message + "\n#10101\n";
+    content += message + "\n#" + generateRandomBinary() + "\n"; // ランダム二進数を追加
   }
 
   // 0.5秒ごとにタブを1つずつ開く
