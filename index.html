@@ -3,28 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LINE連射ツール</title>
+  <title>LINE共有ツール</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>LINE連射ツール</h1>
-  <p>以下の入力欄に固定メッセージと改行数を設定してください。</p>
-
-  <label for="message">固定メッセージ:</label>
-  <input id="message" type="text" placeholder="共有するメッセージを入力">
-  <br>
-
-  <label for="breaks">改行数:</label>
-  <input id="breaks" type="number" min="1" max="50" value="1">
-  <br>
-
-  <button id="start">送信開始</button>
-  <button id="stop">共有停止</button>
-
-  <footer>
-    <p>開発者はこのツールの利用におけるいかなる問題にも責任を負いません。</p>
-  </footer>
-
+  <div class="container">
+    <h1>LINE共有ツール</h1>
+    <label for="message">メッセージ:</label>
+    <textarea id="message" placeholder="共有したい内容を入力" rows="5"></textarea>
+    <br>
+    <label for="breaks">改行数:</label>
+    <input id="breaks" type="number" min="1" max="1000" value="1">
+    <br>
+    <button id="start">送信開始</button>
+    <button id="stop">共有停止</button>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
