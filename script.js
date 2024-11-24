@@ -60,3 +60,4 @@ document.getElementById("stop").addEventListener("click", () => {
 
   alert("共有を停止しました！");
 });
+
