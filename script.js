@@ -10,7 +10,8 @@ function generateRandomBinary() {
   return binary;
 }
 
-document.getElementById("start").addEventListener("click", () => {
+// 共有処理の実行関数
+function startSharing() {
   const message = document.getElementById("message").value;
   const breaks = parseInt(document.getElementById("breaks").value);
 
@@ -19,8 +20,8 @@ document.getElementById("start").addEventListener("click", () => {
     return;
   }
 
-  if (breaks < 1 || breaks > 50) {
-    alert("改行数は1〜50の間で設定してください！");
+  if (breaks < 1 || breaks > 1000) {
+    alert("改行数は1〜1000の間で設定してください！");
     return;
   }
 
@@ -30,26 +31,22 @@ document.getElementById("start").addEventListener("click", () => {
     content += message + "\n#" + generateRandomBinary() + "\n"; // ランダム二進数を追加
   }
 
-  // 0.5秒ごとにタブを1つずつ開く
-  let count = 0; // 開いたタブのカウンター
-  intervalId = setInterval(() => {
-    if (count >= 500) {
-      // 最大500タブで停止
-      clearInterval(intervalId);
-      alert("すべてのタブを開きました！");
-      return;
-    }
+  // LINE共有画面を開く
+  const url = `https://line.me/R/msg/text/${encodeURIComponent(content)}`;
+  const tab = window.open(url, `_blank`);
+  tabs.push(tab); // タブを保存
+}
 
-    const url = `https://line.me/R/msg/text/${encodeURIComponent(content)}`;
-    const tab = window.open(url, `_blank`);
-    tabs.push(tab); // タブを保存
-    count++;
+document.getElementById("start").addEventListener("click", () => {
+  // 0.5秒ごとに共有開始処理を繰り返す
+  intervalId = setInterval(() => {
+    startSharing();
   }, 500); // 0.5秒ごとに実行
 });
 
 document.getElementById("stop").addEventListener("click", () => {
   if (intervalId) {
-    clearInterval(intervalId); // タブを開く処理を停止
+    clearInterval(intervalId); // 共有開始処理を停止
   }
 
   if (tabs.length > 0) {
@@ -61,5 +58,5 @@ document.getElementById("stop").addEventListener("click", () => {
     tabs = []; // タブリストをリセット
   }
 
-  alert("タブの共有を停止しました！");
+  alert("共有を停止しました！");
 });
