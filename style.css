@@ -9,6 +9,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  box-sizing: border-box; /* 全要素のボックスサイズを調整 */
 }
 
 /* コンテナ */
@@ -20,6 +21,7 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* わずかな影 */
   width: 90%;
   max-width: 400px;
+  box-sizing: border-box; /* ボックスサイズを調整 */
 }
 
 /* タイトル */
@@ -41,6 +43,7 @@ textarea {
   resize: none;
   background-color: #f9f9f9; /* 明るい灰色背景 */
   color: #333; /* 濃いグレー文字 */
+  box-sizing: border-box; /* サイズ調整 */
 }
 
 /* 数値入力 */
@@ -53,6 +56,7 @@ input[type="number"] {
   border-radius: 5px;
   background-color: #f9f9f9; /* 明るい灰色背景 */
   color: #333; /* 濃いグレー文字 */
+  box-sizing: border-box; /* サイズ調整 */
 }
 
 /* ボタン */
@@ -63,7 +67,8 @@ button {
   border-radius: 5px;
   cursor: pointer;
   margin: 5px;
-  transition: background-color 0.2s, color 0.2s;
+  transition: background-color 0.2s, color 0.2s; /* スムーズな変化 */
+  box-sizing: border-box; /* サイズ調整 */
 }
 
 /* 送信開始ボタン */
